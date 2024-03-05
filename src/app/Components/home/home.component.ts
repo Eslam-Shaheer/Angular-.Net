@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ProductsComponent } from '../products/products.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ProductsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
