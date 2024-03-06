@@ -1,43 +1,40 @@
+<div class="bg-light ">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(productsCart.length==0){
+            <span class="text-warning">No items in cart</span>
+            }
+            @for(product of productsCart;track $index){
+            <tr>
+                <th scope="row">{{$index +1}}</th>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.quantity}}</td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
 <div class="p-2 products-container">
-    @for(product of products;track product.id){
-    <div class="card relative" [appHighlight]="product.quantity||0">
-        <!-- <div class="card relative" appDraggable> -->
-        <img class="card-img-top" [src]="product.imgURL" alt="Card image cap">
-        @if(!product.quantity){
-        <div class="overlay"></div>
-        }
-        <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <!-- <p class="card-text">{{product.description}}</p> -->
-            <p class="card-text">{{product.price}}</p>
-            @switch (product.quantity) {
-            @case (1) {
-            <p class="text-warning">Only 1 left in stock - order soon.</p>
-            }
-            @case (2) {
-            <p class="text-info">Only 2 left in stock - order soon.</p>
-            }@default {
-            <p>{{product.quantity}} items available</p>
-            }
-
-            }
-            <!-- @if (product.quantity && product.quantity<3) { <p class="text-warning">Only {{product.quantity}} left in
-                stock - order soon.</p>
-                } -->
-
-            <!-- <p class="card-text">{{product.quantity}}</p> -->
-            <button href="#" class="btn btn-primary" (click)="handleBuy(product)"
-                [disabled]="product.quantity==0">Buy</button>
-
-            @if (product.quantity==0) {
-            <p class="text-danger">Out of stock</p>
-            }@else {
-            <p class="text-success">in stock</p>
-            }
-
-
-
-        </div>
-    </div>
+    @if(products.length==0){
+    <h3>No products matches you search critria</h3>
     }
+
+
+    @for(parentProduct of products;track parentProduct.id){
+    <app-single-product [product]="parentProduct" [isChair]="true" (handleAddToCart)="addToCart($event)"
+        [searchValue]="filterValue"></app-single-product>
+    }
+    <div>
+    </div>
 </div>

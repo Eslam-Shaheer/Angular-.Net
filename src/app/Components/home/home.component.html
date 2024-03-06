@@ -6,4 +6,8 @@
 <p>{{username}}</p>
 <p>{{password}}</p> -->
 
-<app-products></app-products>
+<!-- <app-table-products></app-table-products> -->
+
+<input class="form-control mt-2" placeholder="Search" [(ngModel)]="searchText" />
+
+<app-products [filterValue]="searchText"></app-products>

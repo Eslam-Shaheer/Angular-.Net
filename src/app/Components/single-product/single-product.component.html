@@ -1,0 +1,44 @@
+<div class="card relative" [appHighlight]="product.quantity||0" [quantity]="product.id">
+
+    <!-- <div class="card relative" appDraggable> -->
+    <img class="card-img-top" [src]="product.imgURL" alt="Card image cap">
+    @if(!product.quantity){
+    <div class="overlay"></div>
+    }
+    <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <!-- <p class="card-text">{{product.description}}</p> -->
+        <!-- <p class="card-text">{{product.price | currency : "EUR" : "code"}}</p> -->
+        <p class="card-text">{{product.price | exchangeRate : "EGP" | currency}}</p>
+
+        <p>{{currentDate | date:'short'}}</p>
+        <!-- <P>{{obj | json}}</P> -->
+        @switch (product.quantity) {
+        @case (1) {
+        <p class="text-warning">Only 1 left in stock - order soon.</p>
+        }
+        @case (2) {
+        <p class="text-info">Only 2 left in stock - order soon.</p>
+        }@default {
+        <p>{{product.quantity}} items available</p>
+        }
+
+        }
+        <!-- @if (product.quantity && product.quantity<3) { <p class="text-warning">Only {{product.quantity}} left in
+            stock - order soon.</p>
+            } -->
+
+        <!-- <p class="card-text">{{product.quantity}}</p> -->
+        <button href="#" class="btn btn-primary" (click)="addProductToCart(product)"
+            [disabled]="product.quantity==0">Add to cart</button>
+
+        @if (product.quantity==0) {
+        <p class="text-danger">Out of stock</p>
+        }@else {
+        <p class="text-success">in stock</p>
+        }
+
+
+
+    </div>
+</div>

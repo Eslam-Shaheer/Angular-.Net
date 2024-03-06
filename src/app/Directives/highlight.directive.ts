@@ -4,7 +4,9 @@ import {
   HostBinding,
   HostListener,
   Input,
+  OnChanges,
   Renderer2,
+  SimpleChanges,
 } from '@angular/core';
 import { Colors } from '../Enums/colors';
 
@@ -12,19 +14,18 @@ import { Colors } from '../Enums/colors';
   selector: '[appHighlight]',
   standalone: true,
 })
-export class HighlightDirective {
-  // @Input() quantity!: number;
+export class HighlightDirective implements OnChanges {
+  @Input() quantity!: number;
 
   // @HostBinding('style.backgroundColor') backgroundColor: string = '#fff';
 
   @HostListener('mouseover') onMouseOver() {
     // this.backgroundColor = 'blue';
-    console.log('mouseover');
+
     this.elementRef.nativeElement.style.boxShadow =
       'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px';
   }
   @HostListener('mouseout') onMouseOut() {
-    console.log('mouseout');
     this.elementRef.nativeElement.style.boxShadow = 'none';
   }
   addBorder(
@@ -59,7 +60,7 @@ export class HighlightDirective {
     // this.renderer.appendChild(elementRef.nativeElement, span);
     // elementRef.nativeElement.style.transitionDuration = '0.3s';
     // elementRef.nativeElement.classList.add('bg-info');
-    // console.log(this.quantity);
+
     // elementRef.nativeElement.style.border = '2px dashed black';
     // if (this.quantity == 1) {
     //   elementRef.nativeElement.style.border = '2px dashed yellow';
@@ -68,4 +69,6 @@ export class HighlightDirective {
     //   elementRef.nativeElement.style.border = '2px dashed blue';
     // }
   }
+
+  ngOnChanges(changes: SimpleChanges): void {}
 }

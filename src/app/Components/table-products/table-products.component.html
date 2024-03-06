@@ -1,0 +1,7 @@
+<div class="p-2 products-container">
+    @for(parentProduct of products;track parentProduct.id){
+    <app-single-product [product]="parentProduct" [isChair]="false"></app-single-product>
+    }
+    <div>
+    </div>
+</div>

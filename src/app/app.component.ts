@@ -4,6 +4,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
+import { LifeCycleComponent } from './Components/life-cycle/life-cycle.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
     FooterComponent,
     SidebarComponent,
     NavbarComponent,
+    LifeCycleComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
