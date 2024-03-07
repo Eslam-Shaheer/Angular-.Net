@@ -1,11 +1,11 @@
 <div class="d-flex flex-column h-full">
     <app-navbar></app-navbar>
-    <div class="d-flex  justify-content-between flex-fill">
+    <div class="d-flex  justify-content-between flex-fill min-vh-100">
         <app-sidebar class="col-2"></app-sidebar>
-        <app-home class="col-10"></app-home>
+        <div class="col-10">
+            <router-outlet></router-outlet>
+        </div>
     </div>
     <app-footer></app-footer>
-    <app-life-cycle>
-        <div>Shaheer</div>
-    </app-life-cycle>
+    <!-- <app-life-cycle></app-life-cycle> -->
 </div>

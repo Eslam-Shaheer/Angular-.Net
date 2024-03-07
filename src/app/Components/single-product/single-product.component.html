@@ -1,4 +1,5 @@
-<div class="card relative" [appHighlight]="product.quantity||0" [quantity]="product.id">
+<div class="card relative" [appHighlight]="product.quantity||0" [quantity]="product.id"
+    (click)="handleRoute(product.id)">
 
     <!-- <div class="card relative" appDraggable> -->
     <img class="card-img-top" [src]="product.imgURL" alt="Card image cap">
@@ -29,7 +30,7 @@
             } -->
 
         <!-- <p class="card-text">{{product.quantity}}</p> -->
-        <button href="#" class="btn btn-primary" (click)="addProductToCart(product)"
+        <button href="#" class="btn btn-primary" (click)="addProductToCart($event,product)"
             [disabled]="product.quantity==0">Add to cart</button>
 
         @if (product.quantity==0) {

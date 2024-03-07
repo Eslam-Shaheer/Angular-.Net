@@ -4,6 +4,8 @@ import { IProduct } from '../../Models/iproduct';
 import { CurrencyPipe, DatePipe, JsonPipe } from '@angular/common';
 import { ExchangeRatePipe } from '../../Pipes/exchange-rate.pipe';
 import { DraggableDirective } from '../../Directives/draggable.directive';
+import { Route, Router } from '@angular/router';
+import { CartService } from '../../Services/cart.service';
 
 @Component({
   selector: 'app-single-product',
@@ -27,7 +29,16 @@ export class SingleProductComponent {
 
   currentDate: Date = new Date();
 
-  addProductToCart(product: IProduct) {
-    this.handleAddToCart.emit(product);
+  addProductToCart(event: MouseEvent, product: IProduct) {
+    event.stopPropagation();
+    this.cartService.addToCart(product);
+
+    // this.handleAddToCart.emit(product);
+  }
+
+  constructor(private router: Router, private cartService: CartService) {}
+
+  handleRoute(id: number) {
+    this.router.navigate(['/product', id]);
   }
 }
