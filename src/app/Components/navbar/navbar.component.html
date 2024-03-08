@@ -16,6 +16,12 @@
         </ul>
     </div>
 
+    @if(user){
+    <button class="btn btn-primary mx-2" (click)="logout()">Logout</button>
 
-    <div class="active">Test Color</div>
+    <div class="active">
+        <span>Welcome</span>
+        {{user.username}}
+    </div>
+    }
 </nav>

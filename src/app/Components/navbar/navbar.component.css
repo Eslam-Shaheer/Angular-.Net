@@ -1,5 +1,8 @@
 .active-route{
     color: blue;
-    font-weight: bold;
 }
 
+.nav-link{
+    font-size: 18px;
+
+}

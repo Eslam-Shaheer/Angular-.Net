@@ -32,7 +32,7 @@ export class ProductService {
       product.name.includes(searchValue)
     );
   }
-  isLastIndex(id: number | undefined) {
+  isLastIndex(id: number | undefined | string) {
     if (!id) return false;
 
     const findedProduct = this.products[this.products.length - 1];

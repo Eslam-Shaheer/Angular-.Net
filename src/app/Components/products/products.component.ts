@@ -13,6 +13,7 @@ import { CurrencyPipe, DatePipe, JsonPipe, NgFor } from '@angular/common';
 import { ExchangeRatePipe } from '../../Pipes/exchange-rate.pipe';
 import { SingleProductComponent } from '../single-product/single-product.component';
 import { ProductService } from '../../Services/product.service';
+import { HttpProductsService } from '../../Services/http-products.service';
 
 @Component({
   selector: 'app-products',
@@ -35,16 +36,25 @@ export class ProductsComponent implements OnChanges, OnInit {
   products: IProduct[] = [];
   @Input() filterValue: string = '';
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private httpProductService: HttpProductsService
+  ) {}
 
   ngOnInit(): void {
-    this.products = this.productService.getAllProducts();
+    this.httpProductService.getAllProducts().subscribe({
+      next: (data) => {
+        this.products = data;
+      },
+    });
   }
 
   ngOnChanges(): void {
-    this.products = this.productService.getFilteredProductsName(
-      this.filterValue
-    );
+    this.httpProductService
+      .searchProducts(this.filterValue)
+      .subscribe((data) => {
+        this.products = data;
+      });
   }
 
   handleBuy(product: IProduct) {
