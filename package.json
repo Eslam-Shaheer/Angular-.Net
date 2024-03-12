@@ -8,6 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "engine": {
+    "node": "20.11.1",
+    "npm": "10.2.4"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.2.0",
