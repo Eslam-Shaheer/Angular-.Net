@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "engine": {
+  "engines": {
     "node": "20.11.1",
     "npm": "10.2.4"
   },
